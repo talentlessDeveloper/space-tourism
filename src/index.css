@@ -1,13 +1,175 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 230deg 35% 7%;
+
+    --color-secondary: 231deg 77% 90%;
+    --color-white: 0deg 0% 100%;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  @apply bg-body text-white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @apply font-belle;
+}
+
+a {
+  @apply font-barlowC text-white;
+}
+
+/* .header-ul a {
+  @apply pt-9 pb-9 leading-4 tracking-widest;
+} */
+
+.header-ul {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.header-ul span {
+  @apply font-barlowC;
+}
+
+.link {
+  @apply text-sm pb-9 leading-4 tracking-widest transition-all lg:text-base;
+}
+
+.link-active {
+  @apply border-b-4 border-white border-solid;
+}
+
+.menu-ul {
+  background-color: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(3.125rem) brightness(115%) opacity(100%);
+  z-index: 10;
+}
+
+.menu-link {
+  @apply block w-full pb-8 leading-4 tracking-widest;
+}
+
+.menu-link-active {
+  position: relative;
+}
+
+.menu-link-active::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 50%;
+  width: 50%;
+  border-right: 3px solid #fff;
+}
+
+.explore-btn {
+  position: relative;
+  z-index: 1;
+}
+
+.explore-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: hsl(var(--color-white) / 0.25);
+  opacity: 1;
+  z-index: -1;
+  transition: opacity 0.45s ease, transform 0.75s ease-in-out;
+}
+
+.explore-btn:hover::before {
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+.buttons button {
+  @apply font-barlowC text-sm leading-[1.0625rem] tracking-[2.3px] pb-[0.5rem];
+}
+
+.buttons .buttonActive {
+  position: relative;
+  transition: all 0.45s ease-in;
+}
+
+.buttons .buttonActive::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.5rem;
+  width: 100%;
+  height: 0.2rem;
+  background-color: #fff;
+  opacity: 1;
+}
+
+.crewButtons button {
+  @apply w-2.5 h-2.5 rounded-full bg-white opacity-[0.17];
+}
+
+.crewButtons button.buttonCrewActive {
+  @apply bg-white opacity-100;
+}
+
+.techButtons button {
+  @apply text-base font-belle w-[2.5rem] h-[2.5rem] rounded-full border-2 border-clrWhite;
+}
+
+.techButtons button.active {
+  @apply bg-white text-body;
+}
+
+.delayAnimation {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+@media (min-width: 47.9375em) {
+  .buttons button {
+    @apply text-base;
+  }
+
+  .buttons .buttonActive::after {
+    top: 2rem;
+  }
+
+  .techButtons button {
+    width: 3.625rem;
+    height: 3.625rem;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 63.9375rem) {
+  .header::before {
+    content: "";
+    position: absolute;
+    background: hsl(var(--color-white) / 0.25);
+    width: 27.563rem;
+    height: 1px;
+    top: 5.5rem;
+    left: 8.375rem;
+  }
+
+  .techButtons button {
+    width: 5rem;
+    height: 5rem;
+    font-size: 2rem;
+    line-height: 2.31255rem;
+  }
 }
